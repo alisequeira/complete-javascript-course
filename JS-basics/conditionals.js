@@ -82,3 +82,26 @@
                                         break;
         default:   console.log(firstName + ' is a man.');
     }
+
+/**************************
+ * TRURHY AND FALSY VALUES AND EQUALITY OPERATORS
+ */
+
+ /*
+    falsy values: undefined, null, 0, '', NaN
+    truthy values: NOT FALSY VALUES
+ */
+
+ var heigh; 
+
+    if(heigh){
+        console.log('the variable is defined');
+    }else{
+        console.log('the variable is undefined')
+    }
+
+//equality operators
+heigh = 23;
+if(heigh == '23'){
+    console.log('the == operator does type coercion!')
+}
