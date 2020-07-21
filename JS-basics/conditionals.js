@@ -101,6 +101,7 @@
     }
 
 //equality operators
+// == allow coercion, === doesn't allow coercion
 heigh = 23;
 if(heigh == '23'){
     console.log('the == operator does type coercion!')
