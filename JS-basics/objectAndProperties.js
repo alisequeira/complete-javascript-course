@@ -28,3 +28,21 @@
     jane.birthYear = 1969;
     jane['lastName'] = 'Smith';
     console.log(jane);
+
+    /*************************
+     * OBJECT AND METHODS
+     */
+
+    var ali = {
+        firstName: 'Ali',
+        lastName: 'Sequeira',
+        birthYear: 1999,
+        family: ['Magda', 'ALI','Randy', 'Billi'],
+        job: 'student',
+        isMarried: false,
+        calcAge: function(){
+            this.age = 2020 - this.birthYear;
+        }
+    };
+    ali.calcAge();
+    console.log(ali);
