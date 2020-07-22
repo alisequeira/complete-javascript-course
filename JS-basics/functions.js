@@ -1,7 +1,7 @@
 /********************************
  * FUNCTIONS
  */
-
+//function statements
  function calculateAge(birthYear){
      return 2020 - birthYear;
  }
@@ -22,3 +22,24 @@
 
  yearsUntilRetirement(1999, 'Jorgell');
  yearsUntilRetirement(1935, 'Ali');
+
+ /****************************
+  * FUNCTION STATEMENTS AND EXPRESSIONS
+  */
+
+  //function expression
+
+  var whatDoYouDo = function(job, firstName){
+      switch(job){
+          case 'teacher': 
+                    return firstName + ' teaches kids how to code';
+          case 'driver':
+                    return firstName + ' drive an uber in lisbon';
+          case 'designer':
+                    return firstName + ' design beatiful websites';
+          default:
+                    return firstName + ' does something else'; 
+      }
+  }
+
+  console.log(whatDoYouDo('teacher','john'));
