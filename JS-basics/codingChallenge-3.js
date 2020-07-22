@@ -22,7 +22,7 @@
         var tip = 0;
          if (amount < 50){
             tip = (amount * 20) / 100; 
-         }else if(amount > 50 && amounts < 200){
+         }else if(amount > 50 && amount < 200){
             tip = (amount * 15) / 100;
          }else{
             tip = (amount * 10) / 100;
