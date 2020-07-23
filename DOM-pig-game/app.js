@@ -12,15 +12,27 @@
  //DOM ACCESS AND MANIPULATION
 
     var scores, roundScore, activePlayer;
-     scores = [0,0];
-     roundScore = 0 ;
-     activePlayer = 0;// 0 is for first player / 1 is for second player
+    function init(){
+        scores = [0,0];
+        roundScore = 0 ;
+        activePlayer = 0;// 0 is for first player / 1 is for second player   
 
+        
      document.querySelector('.dice').style.display = 'none';//maipulating css
      document.getElementById('score-0').textContent = '0';
      document.getElementById('score-1').textContent = '0';
      document.getElementById('current-0').textContent = '0';
      document.getElementById('current-1').textContent = '0';
+     document.getElementById('name-0').textContent = 'player 1';
+     document.getElementById('name-1').textContent = 'player 2';
+     document.querySelector('.player-0-panel').classList.remove('winner');
+     document.querySelector('.player-1-panel').classList.remove('winner');
+     document.querySelector('.player-0-panel').classList.remove('active');
+     document.querySelector('.player-1-panel').classList.remove('active');
+     document.querySelector('.player-0-panel').classList.add('active');
+
+    }
+    init();
 
 //EVENTS AND EVENT HANDLING 
 
@@ -76,3 +88,5 @@
             document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('active');
             document.querySelector('.dice').style.display = 'none';
     }
+
+    document.querySelector('.btn-new').addEventListener('click', init);
