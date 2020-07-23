@@ -11,11 +11,12 @@
 
  //DOM ACCESS AND MANIPULATION
 
-    var scores, roundScore, activePlayer;
+    var scores, roundScore, activePlayer, gamePlaying;
     function init(){
         scores = [0,0];
         roundScore = 0 ;
-        activePlayer = 0;// 0 is for first player / 1 is for second player   
+        activePlayer = 0;// 0 is for first player / 1 is for second player  
+        gamePlaying = true; 
 
         
      document.querySelector('.dice').style.display = 'none';//maipulating css
@@ -37,30 +38,36 @@
 //EVENTS AND EVENT HANDLING 
 
     document.querySelector('.btn-roll').addEventListener('click', ()=>{//callback function
-        //1. Random number
-        var dice = Math.floor(Math.random() * 6) + 1; //gettin random number for the dice.
+        if(gamePlaying){
+               //1. Random number
+            var dice = Math.floor(Math.random() * 6) + 1; //gettin random number for the dice.
        
 
-        //2. Display the result
-        var diceDOM =  document.querySelector('.dice');
-            diceDOM.style.display = 'block';
-            diceDOM.src = 'dice-' + dice + '.png'; 
-            
+            //2. Display the result
+            var diceDOM =  document.querySelector('.dice');
+                diceDOM.style.display = 'block';
+                diceDOM.src = 'dice-' + dice + '.png'; 
+                
             
 
-        //3. update the round score IF the rolled number was not 1
-        if(dice !== 1){
-            roundScore += dice;
-            document.querySelector('#current-' + activePlayer).textContent = roundScore;
-        }else{
-            nextPlayer();
+            //3. update the round score IF the rolled number was not 1
+            if(dice !== 1){
+                roundScore += dice;
+                document.querySelector('#current-' + activePlayer).textContent = roundScore;
+            }else{
+                nextPlayer();
+            }
+
         }
+     
+        
     });
 
     //IMPLEMENTING 'HOLD' FUNCTION
 
     document.querySelector('.btn-hold').addEventListener('click', () => {
-        //add current score to global score
+        if(gamePlaying){
+             //add current score to global score
         scores[activePlayer] += roundScore;
 
         //updating the UI
@@ -74,10 +81,12 @@
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+            gamePlaying = false;
             
            }else{
                nextPlayer();
            }
+        } 
     });
 
     function nextPlayer(){
