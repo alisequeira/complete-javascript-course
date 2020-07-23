@@ -11,13 +11,29 @@
 
  //DOM ACCESS AND MANIPULATION
 
-    var scores, roundScore, activePlayer, dice;
+    var scores, roundScore, activePlayer;
      scores = [0,0];
      roundScore = 0 ;
      activePlayer = 0;// 0 is for first player / 1 is for second player
 
-     dice = Math.floor(Math.random() * 6) + 1; //gettin random number for the dice.
-     console.log(dice);
-
-     document.querySelector('#current-' + activePlayer).textContent = dice;//textContext only set plain text
      document.querySelector('.dice').style.display = 'none';//maipulating css
+     document.getElementById('score-0').textContent = '0';
+     document.getElementById('score-1').textContent = '0';
+     document.getElementById('current-0').textContent = '0';
+     document.getElementById('current-1').textContent = '0';
+
+//EVENTS AND EVENT HANDLING 
+
+    document.querySelector('.btn-roll').addEventListener('click', ()=>{//callback function
+        //1. Random number
+        var dice = Math.floor(Math.random() * 6) + 1; //gettin random number for the dice.
+       
+
+        //2. Display the result
+        var diceDOM =  document.querySelector('.dice');
+            diceDOM.style.display = 'block';
+            diceDOM.src = 'dice-' + dice + '.png';  
+
+        //3. update the round score IF the rolled number was not 1
+
+    });
