@@ -45,3 +45,41 @@ function third(){
     //console.log(c);
     console.log(a + d);
 }
+
+/***********************
+ * THE 'THIS' KEYWORD
+ */
+
+ /*
+    where does the key variable, or the this keyword, point?
+        .Regular funtion call: this point at the global object(the window object in the browser).
+        .Method call(is a function that is attached to an object): 'this' point to the object that is calling the method
+
+ */
+
+ function calculateAges(year){
+     console.log(2020 - year);
+     console.log(this);//point at window object
+ }
+
+ calculateAges(1999);
+
+ var john = {
+     name: 'john',
+     yearOfBirth: 1999,
+     calculateAge: function(){ 
+        console.log(this);
+        console.log(2020 - this.yearOfBirth);
+     }
+ }
+ john.calculateAge();
+
+ var mike = {
+     name: 'Mike',
+     yearOfBirth: 1994
+ };
+
+ //METHOD BORROWING
+
+ mike.calculateAge = john.calculateAge;
+ mike.calculateAge();
