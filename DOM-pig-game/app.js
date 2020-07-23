@@ -41,11 +41,38 @@
             roundScore += dice;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
         }else{
+            nextPlayer();
+        }
+    });
+
+    //IMPLEMENTING 'HOLD' FUNCTION
+
+    document.querySelector('.btn-hold').addEventListener('click', () => {
+        //add current score to global score
+        scores[activePlayer] += roundScore;
+
+        //updating the UI
+        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer]
+        
+        //check if the player won
+          
+           if(scores[activePlayer] >= 20){
+            var player = document.querySelector('#name-' + activePlayer); 
+            player.textContent = 'YOU WIN!!';
+            document.querySelector('.dice').style.display = 'none';
+            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+            
+           }else{
+               nextPlayer();
+           }
+    });
+
+    function nextPlayer(){
             roundScore = 0;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
             document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('active'); 
             (activePlayer === 0)? activePlayer = 1 : activePlayer = 0;
             document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('active');
             document.querySelector('.dice').style.display = 'none';
-        }
-    });
+    }
