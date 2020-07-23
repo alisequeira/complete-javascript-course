@@ -24,3 +24,24 @@ foo();
 console.log(age);//prints out 23, cuz the execution context is from the global object.
 
 
+/***************************
+ * SCOPING => where can we access a certain variable.
+ */
+
+var a = 'hello';
+first();
+
+function first(){
+    var b = 'hi';
+    second();
+        function second(){
+            var c = ' hey';
+            third();
+        }
+}
+
+function third(){
+    var d = ' john';
+    //console.log(c);
+    console.log(a + d);
+}
