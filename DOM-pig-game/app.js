@@ -32,8 +32,20 @@
         //2. Display the result
         var diceDOM =  document.querySelector('.dice');
             diceDOM.style.display = 'block';
-            diceDOM.src = 'dice-' + dice + '.png';  
+            diceDOM.src = 'dice-' + dice + '.png'; 
+            
+            
 
         //3. update the round score IF the rolled number was not 1
-
+        if(dice !== 1){
+            roundScore += dice;
+            document.querySelector('#current-' + activePlayer).textContent = roundScore;
+        }else{
+            roundScore = 0;
+            document.querySelector('#current-' + activePlayer).textContent = roundScore;
+            document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('active'); 
+            (activePlayer === 0)? activePlayer = 1 : activePlayer = 0;
+            document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('active');
+            document.querySelector('.dice').style.display = 'none';
+        }
     });
