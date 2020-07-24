@@ -64,3 +64,10 @@ console.log('maxHeartRates'+ ' ' + rates);
         teacherQuestion('Jorgell');
         designerQuestion('Jorgell');
 
+//IIFE: Immediately Invoked Function Expressions
+
+   ( function (){
+        var scrore = Math.random() * 10;
+        console.log(scrore >= 5);
+        return (scrore >=5) ? console.log('WINNER!') : console.log('LOSER!');
+    })();
