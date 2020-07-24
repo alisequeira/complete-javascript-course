@@ -45,3 +45,22 @@ console.log('ages'+' '+ages);
 console.log('fullAges' + ' ' + fullAges);
 console.log('maxHeartRates'+ ' ' + rates);
 
+    
+
+// FUNCTIONS RETURNING FUNCTIONS.
+
+    function interviewQuestion(job){
+        if(job === 'designer'){
+            return name =>  console.log( name + ', can you please explain what UX design is?');
+        }else if(job === 'teacher'){
+                return name => console.log('What subject do you teach, ' + name + ' ?');
+        }else{
+            return name => console.log('hello ' + name + ', what do you do?');
+        }
+    }
+
+    var teacherQuestion = interviewQuestion('teacher');//this return the previous function declaration.
+    var designerQuestion = interviewQuestion('designer');
+        teacherQuestion('Jorgell');
+        designerQuestion('Jorgell');
+
