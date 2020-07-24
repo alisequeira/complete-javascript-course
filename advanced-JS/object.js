@@ -42,3 +42,16 @@
     console.log(john);
     console.log(jane.lastName);
     console.log(mark.lastName);
+
+//CREATING OBJECTS: OBJECT.CREATE
+
+    var personProto = {
+        age: function(){
+            console.log(2016 - this.yearOfBirth);
+        }
+    };
+
+    var ali = Object.create(personProto);
+    ali.name = 'Ali';
+    ali.yearOfBirth = 1999;
+    ali.job = 'student';
