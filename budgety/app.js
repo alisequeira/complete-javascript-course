@@ -32,7 +32,18 @@ var UIController = (function(){
 // GLOBAL APP CONTROLLER
 var controller = (function( budgetCtrl, UICtrl){
 //modules can also recive arguments. we'll pass the ohter two modules as arguments, so this module knows about the other two and can connect them
-    var DOM = UICtrl.getDOMStrings();
+    var setUpEventListener = function() {
+        var DOM = UICtrl.getDOMStrings();
+
+        document.querySelector(DOM.inputBtn).addEventListener('click', CtrlAddItem);
+
+        document.addEventListener('keypress', event =>{
+            if(event.keyCode === 13 || event.which === 13){
+                CtrlAddItem();
+            }
+        });
+    }
+
 
     var CtrlAddItem = function (){
         // 1. Get the filed input data.
@@ -45,11 +56,11 @@ var controller = (function( budgetCtrl, UICtrl){
         //5. display the budget control to the UI.
     }
 
-    document.querySelector(DOM.inputBtn).addEventListener('click', CtrlAddItem);
-
-    document.addEventListener('keypress', event =>{
-        if(event.keyCode === 13 || event.which === 13){
-            CtrlAddItem();
-        }
-    });
+   return {
+       init: function(){
+           setUpEventListener();
+       }
+   };
 })(budgetController, UIController);
+
+controller.init();
