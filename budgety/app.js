@@ -1,6 +1,10 @@
 //  BUDGET CONTROLLER
 var budgetController = (function(){//module pattern is that it return an object containing all of the functions that we want to be public.
-    
+    var Expense = function(id, description, value){
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    }
 })();
 
 // UI CONTROLLER
