@@ -230,7 +230,11 @@ var controller = (function( budgetCtrl, UICtrl){
         //3. display the budget control to the UI.
         UICtrl.displayBudget(budget);
     }
-
+    var updatePercentages =  function(){
+        // 1. calculate the percentage
+        // 2. read from the budget controller
+        // 3. update the UI with the new percentages
+    };
 
     var CtrlAddItem = function (){
         var input, newItem;
@@ -250,7 +254,8 @@ var controller = (function( budgetCtrl, UICtrl){
         UICtrl.clearFields();
         //5. calculate and update budget
         updateBudget();
-    
+        // 6. update Percentage
+        updatePercentages();
     }
 
         var ctrlDeleteItem =  function (event){
@@ -269,6 +274,7 @@ var controller = (function( budgetCtrl, UICtrl){
                 UICtrl.deletelistItem(itemID);
                 // 3. update and show the new budget
                 updateBudget();
+                //4. update percentage
             }
         }
 
