@@ -100,7 +100,8 @@ var UIController = (function(){
         budgetLabel: '.budget__value',
         incomeLabel: '.budget__income--value',
         expensesLabel:'.budget__expenses--value',
-        percentageLabel: '.budget__expenses--percentage'
+        percentageLabel: '.budget__expenses--percentage',
+        container: '.container'
     };
     return {
         getInput: function (){
@@ -116,7 +117,7 @@ var UIController = (function(){
             //create HTML string with placeholder text
             if(type === 'inc'){
                 element = DOMString.incomeContainer;
-                html =  `<div class="item clearfix" id="income-%id%">
+                html =  `<div class="item clearfix" id="inc-%id%">
                 <div class="item__description">%description%</div>
                 <div class="right clearfix">
                     <div class="item__value">%value%</div>
@@ -127,7 +128,7 @@ var UIController = (function(){
             </div>`
             }else if (type === 'exp'){
                 element = DOMString.expensesContainer;
-                html =  `<div class="item clearfix" id="expense-%id%">
+                html =  `<div class="item clearfix" id="exp-%id%">
                 <div class="item__description">%description%</div>
                 <div class="right clearfix">
                     <div class="item__value">%value%</div>
@@ -196,6 +197,8 @@ var controller = (function( budgetCtrl, UICtrl){
                 CtrlAddItem();
             }
         });
+
+        document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
     }
     var updateBudget = function(){
          //1. Calculate the budget
@@ -227,6 +230,22 @@ var controller = (function( budgetCtrl, UICtrl){
         updateBudget();
     
     }
+
+        var ctrlDeleteItem =  function (event){
+            var itemID, splitID, type, ID;
+        //In event delegation, an event bubble up, so we can know where it was fire, by looking at target property of event
+            
+         itemID =  event.target.parentNode.parentNode.parentNode.parentNode.id;//DOM TRAVERSE: parentNode we can say that we want the parent node of this target
+            if(itemID){
+                splitID = itemID.split('-');
+                type = splitID[0];
+                ID = splitID[1];
+
+                // 1. delete the item from the data structure
+                // 2. delete the item from UI
+                // 3. update and show the new budget
+            }
+        }
 
    return {
        init: function(){
