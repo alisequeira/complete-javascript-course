@@ -149,7 +149,7 @@ var UIController = (function(){
                 <div class="item__description">%description%</div>
                 <div class="right clearfix">
                     <div class="item__value">%value%</div>
-                    <div class="item__percentage">%percentage%</div>
+                    <div class="item__percentage">21%</div>
                     <div class="item__delete">
                         <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
                     </div>
@@ -164,6 +164,11 @@ var UIController = (function(){
 
             //insert the HTML into DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHTML);
+
+        },
+        deletelistItem: function(selectorID){
+            var el = document.getElementById(selectorID);
+            el.parentNode.removeChild(el);//removechild: delete the child of the parent node selected
 
         },
         clearFields: function(){
@@ -261,7 +266,9 @@ var controller = (function( budgetCtrl, UICtrl){
                 // 1. delete the item from the data structure
                     budgetCtrl.deleteItem(type, ID);
                 // 2. delete the item from UI
+                UICtrl.deletelistItem(itemID);
                 // 3. update and show the new budget
+                updateBudget();
             }
         }
 
