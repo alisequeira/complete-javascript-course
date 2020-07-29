@@ -42,3 +42,40 @@
             };
             isFullAge(21, 1990, 1999, 1965);
         }
+
+//DEFAULT PARAMETERS
+
+        /*
+            We use default parameters whenever we want one or more parameters
+            of a function to be preset, so we want to have a defult value.
+        */
+
+        //ES5
+            function Person(firstName, yearOfBirth, lastName, nationality){
+                lastName === undefined ? lastName = 'Sequeira' : lastName;
+                nationality === undefined ? nationality = 'Nicaragua' : nationality;
+
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.yearOfBirth = yearOfBirth;
+                this.nationality = nationality;
+            }
+            var ali = new Person('Ali', 1999);
+            console.log(ali);
+            var fer = new Person('fernada', 2000, 'Boza', 'Spanish');
+            console.log(fer);
+
+        //ES6
+            {
+                function Person(firstName, yearOfBirth, lastName = 'Obregon', nationality = 'Nicaraguan'){
+                   
+                    this.firstName = firstName;
+                    this.lastName = lastName;
+                    this.yearOfBirth = yearOfBirth;
+                    this.nationality = nationality;
+                }
+                var ali = new Person('Ali', 1999);
+                console.log(ali);
+                var fer = new Person('fernada', 2000, 'Boza', 'Spanish');
+                console.log(fer);
+            }
