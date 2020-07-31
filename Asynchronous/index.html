@@ -144,8 +144,24 @@
                     console.log(error);
                 });
             };
-            getWeather(2487956);
-            getWeather(44418);
+            //getWeather(2487956);
+            //getWeather(44418);
+
+        /////////////////////////////MAKING AJAX CALL WITH FETCH AND ASYNC/AWAIT///////////////////////
+
+            async function getWeatherAW (woeid){
+                try{
+                    const resolve = await fetch(`https://www.metaweather.com/api/location/${woeid}/`);
+                    const data = await resolve.json()
+                        const tomorrow = data.consolidated_weather[0];
+                        console.log(`temperatura in ${data.title} stay between ${tomorrow.min_temp} and ${tomorrow.max_temp}`);
+                }catch(error){
+                    console.log(error);
+                }
+             
+            };
+            getWeatherAW(2487956);
+            getWeatherAW(44418)
 
     </script>
 </body>
