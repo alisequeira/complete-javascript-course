@@ -26,7 +26,7 @@
         */
 
         //////////////////////////////The old way Asynchronous JS with callbacks////////////////////////////////////////
-
+        /*
         function getRecipe (){
             setTimeout(() => {
                 const recipeID = [523, 883, 432, 974];
@@ -50,6 +50,60 @@
             },1500);
         }
         getRecipe();
+        */
+
+        ////////////////////////////////////////From callback hell to Promise//////////////////////////////////////////////
+
+        /*
+            Promise is an object that keep trak about whether a certain event has happenend or not 
+            And if it happend detemines what happend next.
+        */
+
+       const getID =  new Promise((resolve, reject) => {
+            setTimeout(()=>{
+                resolve([523, 883, 432, 974]);
+            },1500)
+        });
+
+        const getRecipe = (recID)=> {
+            return new Promise ((resolve,reject) => {
+                setTimeout(ID => {
+                    const recipe = {
+                        title: 'Fresh tomato and pasta',
+                        publisher: 'Jorgell'
+                    }
+                    resolve(`${ID}: ${recipe.title}`);
+                },1500, recID);
+            });
+        }
+
+        const getRelated = publisher => {
+            return new Promise((resolve,reject) => {
+                setTimeout(pub => {
+                    const recipe = {
+                        title: 'Italian Pizza',
+                        publisher: 'Jorgell'
+                    }
+                    resolve(`${pub}: ${recipe.title}`);
+                },1500,publisher)
+            })
+        };
+
+        getID
+        .then(IDs => {
+            console.log(IDs);
+          return  getRecipe(IDs[2])
+        })
+        .then(recipe => {
+            console.log(recipe);
+            return getRelated('Jorgell');
+        })
+        .then(recipe => {
+            console.log(recipe);
+        })
+        .catch(error => {
+            console.log(error);
+        });
 
     </script>
 </body>
