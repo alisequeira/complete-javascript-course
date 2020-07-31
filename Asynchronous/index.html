@@ -88,7 +88,7 @@
                 },1500,publisher)
             })
         };
-
+        /*
         getID
         .then(IDs => {
             console.log(IDs);
@@ -104,7 +104,26 @@
         .catch(error => {
             console.log(error);
         });
+        */
 
+        /////////////////////////////////////ASYNC/AWAIT////////////////////////////////////////////////
+
+            /*
+                async/await was designed for us to consume promises
+                and not to produce them
+            */
+
+            async function getRecipesAW() {
+                const IDs = await getID;
+                console.log(IDs);
+
+                const recipe = await getRecipe(IDs[2]);
+                console.log(recipe);
+
+                const related = await getRelated('Jorgell Obregon');
+                console.log(related)
+            };
+            getRecipesAW();
     </script>
 </body>
 </html>
