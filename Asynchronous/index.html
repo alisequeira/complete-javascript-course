@@ -58,7 +58,7 @@
             Promise is an object that keep trak about whether a certain event has happenend or not 
             And if it happend detemines what happend next.
         */
-
+        /*
        const getID =  new Promise((resolve, reject) => {
             setTimeout(()=>{
                 resolve([523, 883, 432, 974]);
@@ -88,6 +88,7 @@
                 },1500,publisher)
             })
         };
+        */
         /*
         getID
         .then(IDs => {
@@ -113,6 +114,7 @@
                 and not to produce them
             */
 
+            /*
             async function getRecipesAW() {
                 const IDs = await getID;
                 console.log(IDs);
@@ -124,6 +126,27 @@
                 console.log(related)
             };
             getRecipesAW();
+            */
+
+        /////////////////////////////MAKING AJAX CALL WITH FETCH AND PROMISE///////////////////////
+            function getWeather (woeid){
+                fetch(`https://www.metaweather.com/api/location/${woeid}/`)
+                .then(resolve => {
+                    return   resolve.json();
+                })
+
+                .then( data => {
+                    const today = data.consolidated_weather[0];
+                    console.log(`temperatura in ${data.title} stay between ${today.min_temp} and ${today.max_temp}`);
+                })
+    
+                .catch(error=>{
+                    console.log(error);
+                });
+            };
+            getWeather(2487956);
+            getWeather(44418);
+
     </script>
 </body>
 </html>
