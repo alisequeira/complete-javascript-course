@@ -10,6 +10,8 @@ console.log(`using imported functions ! ${searchView.add(ID, 2)} and ${searchVie
 */
 
 import Search from './models/Search';
+import * as searchView from './views/searchView'
+import {elements} from './views/base';
 
 /**GLOBAL STATE OF THE APP
  * -Search object
@@ -19,27 +21,26 @@ import Search from './models/Search';
  */
     const state = {};
 
-    const controlleSearch = async () => {
+    const controlSearch = async () => {
         //1) Get the query from the view
-        const query = 'Pizza'//TODO
+        const query = searchView.getInput();
+        console.log(query)
 
         if(query){
             //2) New Search object and add to state
             state.search = new Search(query);
 
             //3) Prepare UI for result 
-
+            searchView.clearInput();
+            searchView.clearResults();
             //4) Search for recipes
-            await state.search.getResults()
+            await state.search.getResults();
             //5) render result on UI
-            console.log(state.search.result);
+           searchView.renderResults(state.search.result);
         }
     }
-    document.querySelector('.search').addEventListener('submit', e => {
+    elements.searchForm.addEventListener('submit', e => {
         e.preventDefault();
-        controlleSearch()
+        controlSearch();
 
     });
-
-    
-    search.getResults();
