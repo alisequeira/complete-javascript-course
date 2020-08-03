@@ -9,4 +9,8 @@ import * as searchView from './views/searchView';//importing all functions from 
 console.log(`using imported functions ! ${searchView.add(ID, 2)} and ${searchView.multiply(3,5)}, ${string}`);
 */
 
-import string from './models/Search';
+import Search from './models/Search';
+
+    const search = new Search('pizza');
+    console.log(search);
+    search.getResults();
