@@ -8,3 +8,5 @@ import * as searchView from './views/searchView';//importing all functions from 
 //console.log(`using imported functions ! ${add(ID, 2)} and ${multiply(3,5)}, ${string}`);
 console.log(`using imported functions ! ${searchView.add(ID, 2)} and ${searchView.multiply(3,5)}, ${string}`);
 */
+
+import string from './models/Search';

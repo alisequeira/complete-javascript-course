@@ -4090,19 +4090,7 @@ eval("\n\nmodule.exports = function (module) {\n\tif (!module.webpackPolyfill) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _test = __webpack_require__(/*! ./test */ \"./src/js/test.js\");\n\nvar _test2 = _interopRequireDefault(_test);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar z = 23; //global app controler\n\nconsole.log('I importet ' + _test2.default + ' from another module called test.js variable z is ' + z);\n\n//# sourceURL=webpack:///./src/js/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/test.js":
-/*!************************!*\
-  !*** ./src/js/test.js ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nconsole.log('Imported module');\nexports.default = 12345;\n\n//# sourceURL=webpack:///./src/js/test.js?");
+eval("//global app controler\n/*\r\n//there's three ways of import files from modules:\r\nimport string from './models/Search';//importing the entire module\r\nimport {add , multiply, ID} from './views/searchView';//importing functions from a module\r\nimport * as searchView from './views/searchView';//importing all functions from a module\r\n\r\n//console.log(`using imported functions ! ${add(ID, 2)} and ${multiply(3,5)}, ${string}`);\r\nconsole.log(`using imported functions ! ${searchView.add(ID, 2)} and ${searchView.multiply(3,5)}, ${string}`);\r\n*/\n\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ }),
 
