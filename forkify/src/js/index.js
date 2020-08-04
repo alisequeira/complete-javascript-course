@@ -107,3 +107,20 @@ import {elements, renderLoader, clearLoader} from './views/base';
 
     
      ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+
+     //handling recipe button clicks
+
+        elements.recipe.addEventListener('click', e => {
+            if(e.target.matches('.btn-decrease, .btn-decrease *')){
+                //decrease is clicket
+                if(state.recipe.servings > 1){
+                    state.recipe.updateServings('dec');
+                    recipeView.updateServingsIngredients(state.recipe);
+                }
+            }else if(e.target.matches('.btn-increase, .btn-increase *')){
+                //increase is clicked
+                state.recipe.updateServings('inc');
+                recipeView.updateServingsIngredients(state.recipe);
+            }
+            console.log(state.recipe);
+        });
