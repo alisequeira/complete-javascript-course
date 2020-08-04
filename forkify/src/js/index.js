@@ -10,7 +10,8 @@ console.log(`using imported functions ! ${searchView.add(ID, 2)} and ${searchVie
 */
 
 import Search from './models/Search';
-import * as searchView from './views/searchView'
+import * as searchView from './views/searchView';
+import Recipe from './models/Recipe';
 import {elements, renderLoader, clearLoader} from './views/base';
 
 /**GLOBAL STATE OF THE APP
@@ -20,6 +21,10 @@ import {elements, renderLoader, clearLoader} from './views/base';
  * -Like recipe
  */
     const state = {};
+
+    /**
+        SEARCH CONTROLLER
+     */
 
     const controlSearch = async () => {
         //1) Get the query from the view
@@ -58,3 +63,12 @@ import {elements, renderLoader, clearLoader} from './views/base';
                 searchView.renderResults(state.search.result, goToPage);
             }
         });
+
+
+    /**
+        RECIPE CONTROLLER
+     */
+
+        const r = new Recipe(46956);
+        r.getRecipe();
+        console.log(r);
