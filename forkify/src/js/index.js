@@ -11,6 +11,7 @@ console.log(`using imported functions ! ${searchView.add(ID, 2)} and ${searchVie
 
 import Search from './models/Search';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 import Recipe from './models/Recipe';
 import {elements, renderLoader, clearLoader} from './views/base';
 
@@ -81,7 +82,8 @@ import {elements, renderLoader, clearLoader} from './views/base';
 
          if(id){
             //prepare the UI for changes
-
+            recipeView.clearRecipe();
+            renderLoader(elements.recipe);
             //Create new recipe object
             state.recipe = new Recipe(id);
             //get recipe data
@@ -96,7 +98,8 @@ import {elements, renderLoader, clearLoader} from './views/base';
             state.recipe.calcTime();
             state.recipe.calcServing();
             //render recipe
-            console.log(state.recipe);
+            clearLoader();
+            recipeView.renderRecipe(state.recipe);
          }
      }
 
