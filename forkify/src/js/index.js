@@ -84,6 +84,8 @@ import {elements, renderLoader, clearLoader} from './views/base';
             //prepare the UI for changes
             recipeView.clearRecipe();
             renderLoader(elements.recipe);
+            //highlight selected search item
+            if(state.search) searchView.highlightselected(id);
             //Create new recipe object
             state.recipe = new Recipe(id);
             //get recipe data
