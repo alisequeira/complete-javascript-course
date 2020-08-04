@@ -86,8 +86,9 @@ import {elements, renderLoader, clearLoader} from './views/base';
             state.recipe = new Recipe(id);
             //get recipe data
             try{
+                //get parse ingredientes
                 await state.recipe.getRecipe();
-
+                state.recipe.parseIngredients();
             }catch(err){
                 alert('error processing recipe!');
             }
