@@ -11,7 +11,7 @@ console.log(`using imported functions ! ${searchView.add(ID, 2)} and ${searchVie
 
 import Search from './models/Search';
 import * as searchView from './views/searchView'
-import {elements} from './views/base';
+import {elements, renderLoader, clearLoader} from './views/base';
 
 /**GLOBAL STATE OF THE APP
  * -Search object
@@ -33,9 +33,11 @@ import {elements} from './views/base';
             //3) Prepare UI for result 
             searchView.clearInput();
             searchView.clearResults();
+            renderLoader(elements.searchRes);
             //4) Search for recipes
             await state.search.getResults();
             //5) render result on UI
+            clearLoader();
            searchView.renderResults(state.search.result);
         }
     }
