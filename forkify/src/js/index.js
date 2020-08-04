@@ -46,3 +46,15 @@ import {elements, renderLoader, clearLoader} from './views/base';
         controlSearch();
 
     });
+
+    //event delegation
+        elements.searchResPages.addEventListener('click', e => {
+            //Element.closest() return the closest ancestor of the current element (or the current element itself)
+            // which matches the selector given in parameters.
+            const btn = e.target.closest('.btn-inline');
+            if(btn){
+                const goToPage = parseInt(btn.dataset.goto, 10);
+                searchView.clearResults();
+                searchView.renderResults(state.search.result, goToPage);
+            }
+        });
