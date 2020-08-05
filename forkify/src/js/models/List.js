@@ -5,19 +5,20 @@ export default class List{
         this.items = [];
     }
 
-    addItem(count, unit, ingedient){
+    addItem(count, unit, ingredient){
         const item = {
             id: uniqid(),
             count,
             unit,
             ingredient
         }
+        return item;
     }
 
     deleteItem(id){
         const index = this.items.findIndex(el => el.id === id);//return the id
         //[2,4,8] splice(1,1) --> return 4 , original array [2,8]
-        this.splice(index,1);
+        this.items.splice(index, 1);
     }
 
     updateCount(id, newCount){
