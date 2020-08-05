@@ -14,6 +14,7 @@ import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
 import Recipe from './models/Recipe';
+import Likes from './models/Likes';
 import {elements, renderLoader, clearLoader} from './views/base';
 import List from './models/List';
 
@@ -145,6 +146,40 @@ import List from './models/List';
                 state.list.updateCount(id,val);
             }
         });
+
+    /**
+ * LIKE CONTROLLER
+ */
+        const controlLike = () => {
+            if (!state.likes) state.likes = new Likes();
+
+            const currentID = state.recipe.id;
+
+            //user has not yet like current recipe
+            if(!state.likes.isLiked(currentID)){
+                // Add like to the state
+                const newLike = state.likes.isLiked(
+                    currentID,
+                    state.recipe.title,
+                    state.recipe.author,
+                    state.recipe.img
+                );
+                //Toggle the like button
+
+                //Add like to the ui list
+                console.log(state.likes);
+
+              //user has not yet like current recipe
+            }else{
+                //remove like from the 
+                    state.likes.deleteLike(currentID);
+                //toggle the like button
+
+                //remove like from UI list
+                console.log(state.likes);
+            }
+        }
+
      //handling recipe button clicks
 
         elements.recipe.addEventListener('click', e => {
@@ -159,6 +194,10 @@ import List from './models/List';
                 state.recipe.updateServings('inc');
                 recipeView.updateServingsIngredients(state.recipe);
             }else if (e.target.matches('.recipe__btn--add *')){
+                //Add ingredients to shopping list
                 controlList();
+            }else if(e.target.matches('.recipe__love, .recipe__love *')) {
+                // Like controller
+                controlLike();
             }
         });
